@@ -36,7 +36,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [https://github.com/Divjas-Singh/-Expenses-chart-component-](https://github.com/Divjas-Singh/-Expenses-chart-component-)
 - Live Site URL: [https://divjas-singh.github.io/-Expenses-chart-component-/](https://divjas-singh.github.io/-Expenses-chart-component-/)
 
 ## My process
