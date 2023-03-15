@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Interactive rating component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+  *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+  }
+  html{
+      font-size: 62.5%;
+          -moz-user-select: none;
+      -webkit-user-select: none;
+      user-select: none;
+    
+  }
+  body{
+  
+      display:grid;
+      justify-items: center;
+      align-content: center;
+      height: 100vh;
+      width: 100vw;
+      background-color: hsl(216, 12%, 8%);
+  }
+  main{
+    background-color: #202631;
+    padding: 2rem;
+    max-width: 30%;
+    border-radius: 2rem;
+    display: grid;
+    gap:3rem;
+    animation-timing-function: linear ;
+    animation-iteration-count: 5;
+  }
+  @keyframes vibrate {
+    0%{
+    translate:0px 0px;
+    }
+    25%{
+      translate: -5px 0px;
+    }
+    100%{
+      translate: 5px 0px;
+    }
+  }
+  .star{
+    display: grid;
+    background-color:hsla(227, 13%, 13%, 0.491) ;
+    font-weight: 400;
+    width: 5rem;
+    height:5rem;
+    place-items: center;
+    text-align: center;
+    border-radius:50% ;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    color: hsl(216, 12%, 54%);
+  }
+  h1{
+      
+      font-size: 3rem;
+      color: rgb(255, 255, 255);
+      font-weight: 700;
+      font-family: 'Barlow Semi Condensed', sans-serif;
+    }
+  h3{
+    font-size: 2rem;
+    font-weight:lighter;
+    line-height: 1.5;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    color: hsl(216, 12%, 54%);
+  }
+  .optns{
+    display: grid;
+    background-color:hsla(227, 13%, 13%, 0.491) ;
+    font-weight: 400;
+    width: 5rem;
+    height:5rem;
+    place-items: center;
+    text-align: center;
+    border-radius:50% ;
+    font-size: 2rem;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    color: hsl(216, 12%, 54%);
+    transition: background-color  300ms ease-out;
+  }
+  ul{
+    list-style-type: none;
+    display: grid;
+    grid-auto-flow: column;
+    justify-items: center;
+    gap: 1rem;
+    width: 100%;
+    text-align: center;
+    justify-self: center
+  }  
+  .optns:not(.clickcolor):hover{
+    background-color:hsla(216, 81%, 84%, 0.952);;
+  }
+  .clickcolor{
+    transition: none;
+    background-color: hsl(25, 97%, 53%);
+  }
+  .sub_btn{
+    font-size: 2rem;
+    border: none;
+    border-radius: 20rem;
+    padding: 2rem 0;
+    font-weight: 700;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    background-color: hsl(25, 97%, 53%);
+    color: white;
+  }
+  button:active,.optns:active{
+    transform: scale(0.98);
+  }
+  button:active{background-color:hsla(216, 81%, 84%, 0.952);}
+  .info{
+    display: grid;
+    gap:1rem;
+  }
+  .thnksH1,.thnksH3,.thnksP,.thnksImg{
+    text-align: center;
+    justify-self: center;
+  }
+  .thnksP{
+    border-radius: 10rem;
+    background-color:hsla(227, 13%, 13%, 0.491) ;
+    font-size: 1.5rem;
+    word-spacing: 0.2rem;
+    padding: 1rem 2rem;
+    font-weight: 100;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    color: hsl(25, 97%, 53%);
+  }
+  .thnksH3{
+    font-size: 1.8rem;
+  }
+  .hidden{
+    display: none;
+  }
+  @media screen and (max-width:1160px){
+    html{
+      font-size: 55%;
+    }
+}
+  @media screen and (max-width:970px){
+    main{
+      max-width:50%;
+
+    }
+}
+  @media screen and (max-width:570px){
+    html{
+      font-size: 45%;
+    }
+    main{
+      max-width:60%;
+
+}
+}
+  @media screen and (max-width:400px){
+    main{
+      max-width:80%;
+
+    }
+}
+
+  </style>
+</head>
+<body>
+  <main id=thnksPage class="hidden">
+    <img class="thnksImg" src="images/illustration-thank-you.svg" alt="">
+  <p class="thnksP"></p>
+  <h1 class="thnksH1">Thank you!</h1>
+  <h3 class="thnksH3">We appreciate you taking the time to give a rating. If you ever need more support,don’t hesitate to get in touch!</h3>
+  </main>
+   <main id="submitPage">
+    <div class="star">
+    <img  src="images/icon-star.svg" alt="">
+  </div>
+
+  <div class="info">
+    <h1>How did we do?</h1>
+
+    <h3>
+    Please let us know how we did with your support request. All feedback is appreciated 
+    to help us improve our offering!
+    </h3>
+  </div>
+    <ul>
+      <li  onclick="" class="optns" data-val="1">1</li>
+
+      <li  onclick="" class="optns" data-val="2">2</li>
+      <li  onclick="" class="optns" data-val="3">3</li>
+      <li  onclick="" class="optns" data-val="4">4</li>
+      <li  onclick="" class="optns" data-val="5">5</li>
+    </ul>
+      <button class="sub_btn" type="submit" onclick="loadPage()">Submit</button> 
+  </main>
+
+
+  <script>
+    let rate;
+    const ratings = document.querySelectorAll('.optns');
+
+   
+
+
+    ratings.forEach((rating)=>{
+      rating.addEventListener('click',(e)=>{
+        let curr = e.target.dataset.val;
+        if(rate && rate != curr){
+          document.querySelector(`[data-val="${rate}"]`).classList.remove('clickcolor');
+        }
+        e.target.classList.add('clickcolor');
+        rate = curr;
+      })
+    });
+    
+    
+    
+    
+    const loadPage=()=> {
+      if (rate) {
+        document.querySelector('.thnksP').insertAdjacentText("afterbegin",`You selected ${rate} out of 5`)
+        document.querySelector('#thnksPage').classList.remove('hidden');
+      document.querySelector('#submitPage').classList.add('hidden');
+      }
+      else{
+        // console.log('Enter a Rating before submitting');
+        let interval = 100
+        document.querySelector('#submitPage').style.animationName = 'vibrate';
+        document.querySelector('#submitPage').style.animationDuration = `${interval}ms`;
+        setTimeout(() => {
+          document.querySelector('#submitPage').style.animationName = '';
+        }, 
+        interval);
+      }
+    };
+
+
+  </script>
+
+</body>
+</html>
