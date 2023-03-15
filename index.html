@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  
+  <title>Frontend Mentor | Expenses chart component</title>
+
+  <style>
+    * {
+      font-family: 'Barlow Semi Condensed', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      outline: none;
+      -webkit-user-select: none; 
+      -ms-user-select: none; 
+      user-select: none; 
+    }
+    html{
+      font-size: 62.5%;
+      }
+
+    body {
+      display: grid;
+      justify-items: center;
+      align-items: center;
+      background-color: hsl(31, 84%, 90%);
+      height: 100vh;
+      width: 100vw;
+
+    }
+    main{
+      display: grid;
+      gap:2rem;
+      width: fit-content;
+      padding: 2rem;
+    }
+    header{
+      background-color: #ec775f;
+      padding: 2rem;
+      display: grid;
+      grid-auto-flow: column;
+      justify-content: space-between;
+      border-radius: 1.5rem;
+      align-content: center;
+      
+    }
+    .balance{
+      color: white;
+      font-family: 'Barlow Semi Condensed', sans-serif;
+      font-weight: lighter;
+      display: grid;
+      font-size: 1.5rem;
+    }
+    .balance h4{
+      font-weight: 500;
+    }
+    .spending{
+      background-color: white;
+      border-radius:1.5rem ;
+      padding: 2rem;
+      display: grid;
+      gap:2rem;
+    }
+    .days{
+      list-style-type: none;
+      display: grid;
+      grid-template-columns: repeat(7,1fr);
+      gap: 1rem;
+      font-size: 1.4rem;
+      text-align: center;
+      align-items: center;
+    }
+    .days li{
+      height: 40vh;
+      display: grid;
+      grid-template-rows: 9fr 1fr;
+    }    
+    .days li span{
+      
+      position: relative;
+      align-self: end;
+      border-radius: 0.8rem;
+      width: 8vw;
+      max-width: 4rem;
+      
+    }
+    .days li span::after{
+      content: "";
+      position:absolute;
+      background-color: white;
+      width: 100%;
+      top: 0;
+      left:0;
+      height: 0%;
+      -webkit-user-select: none; 
+      -ms-user-select: none; 
+      user-select: none; 
+      animation: heightincr 500ms 1;
+      
+    }
+    .bar_info{
+      display: grid;
+      position: absolute;
+      height: 3.2vh;
+      width: 100%;
+      left: 0;
+      top: calc(-3.2vh - 0.5rem);
+      background-color: rgba(0, 0, 0, 1);
+      border-radius: 0.3rem;
+      color: white;
+      font-size: 1rem;
+      place-content: center;
+      transition: opacity 300ms linear;
+      opacity: 0%;
+    }
+    .bar_info::after{
+      display: grid;
+      position: absolute;
+      content: "";
+      width: 0;
+      height: 0;
+      -webkit-user-select: none; /* Safari */
+      -ms-user-select: none; /* IE 10 and IE 11 */
+      user-select: none; 
+      border: 4px solid transparent;
+      border-bottom: 0;
+      border-top: 8px solid rgba(0, 0, 0,1);
+      top:3vh;
+      left: 50%;
+      opacity: 0%;
+      transition: opacity 275ms linear;
+    }
+    span:hover{
+      transform: scale(1.02);
+      background-blend-mode: color-burn;
+      box-shadow: rgba(0, 0, 0, 0.198) 0px 10px 20px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+    }
+    .days li span:hover .bar_info ,  
+    .days li span:hover .bar_info::after{
+      opacity: 100%;
+    }
+    @keyframes heightincr {
+      0%{
+        height:100%;
+        display: block;
+      }
+      100%{
+        height: 0%; 
+      }
+    }
+    .days li p{
+      color: rgba(158, 158, 158, 0.832);
+    }
+    .spending h1{
+      color: hsl(25, 47%, 15%);
+      font-size: 3rem;
+    }
+    .spending h3{
+      color:rgba(158, 158, 158, 0.832) ;
+    }
+    h2{
+      color: hsl(25, 47%, 15%);
+    }
+    .money{
+      display: grid;
+      grid-auto-flow: column;
+      justify-content: space-between;
+
+    }
+    @media screen and (max-width:768px){
+      .days li span:hover .bar_info ,  
+      .days li span:hover .bar_info::after{
+        opacity: 0%;
+      }
+      .days li span:active .bar_info ,  
+      .days li span:hover .bar_info::after{
+        opacity: 100%;
+      }
+      }
+      @media screen and (max-width:500px){
+        html{
+          font-size: 55%;
+        }
+        .spending {
+        gap: 1rem;
+        }
+      }
+      @media screen and (max-width:400px){
+        html{
+          font-size: 50%;
+        }
+        .spending {
+        gap: 0.6rem;
+        }
+      }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="balance">
+        <h4>My balance</h4> 
+        <h1>$921.48</h1>
+      </div>
+    <svg width="72" height="48" viewBox="0 0 72 48" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#382314" cx="48" cy="24" r="24"/><circle stroke="#FFF" stroke-width="2" cx="24" cy="24" r="23"/></g></svg>
+    </header>
+    <div class="spending"> 
+      <h1>Spending - Last 7 days</h1>
+      <ul class="days">
+      </ul>
+      <hr>
+      
+        <h3>Total this month</h3>
+      <div class="money">
+        <h1>$478.33</h1>
+        <div>
+          <h2>+2.4%</h2>
+          <h3>from last month</h3>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+
+  <script src="graph.js">
+  </script>
+</body>
+</html>
